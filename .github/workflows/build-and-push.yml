@@ -1,0 +1,28 @@
+on: push
+name: build and push
+jobs:
+  update-container:
+    name: miktex docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: download this repo
+        uses: actions/checkout@master
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: login to docker
+        uses: docker/login-action@v1
+        with: 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: build and push to docker hub
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: |
+            cr0wg4n/miktex:${{ github.sha }}
+            cr0wg4n/miktex:latest
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+        
