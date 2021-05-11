@@ -6,11 +6,11 @@ This image allows you to run MiKTeX on any computer that supports Docker.
 
 Get the latest image from the registry:
 
-    docker pull miktex/miktex
+    docker pull cr0wg4n/miktex
 
 or build it yourself:
 
-    docker build --tag miktex/miktex .
+    docker build --tag cr0wg4n/miktex .
 
 ## Using the image
 
@@ -58,5 +58,5 @@ directory, you can run `pdflatex` as follows:
       -v $(pwd):/miktex/work \
       -e MIKTEX_GID=$(id -g) \
       -e MIKTEX_UID=$(id -u) \
-      miktex/miktex \
+      cr0wg4n/miktex \
       pdflatex main.tex
