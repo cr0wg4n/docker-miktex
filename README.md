@@ -60,3 +60,6 @@ directory, you can run `pdflatex` as follows:
       -e MIKTEX_UID=$(id -u) \
       cr0wg4n/miktex \
       pdflatex main.tex
+ 
+ ### Last DB Update
+ July 13, 2020
